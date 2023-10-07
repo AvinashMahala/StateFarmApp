@@ -1,0 +1,4 @@
+A Hackathon Challenge Statement
+
+People of all ages sometimes don't know the little things that you can do to keep what they value in better shape. State Farm would like to help customers protect what is valuable and have a plan for rainy days.
+Design a react native mobile app with mongodb that would provide guidance for vehicle maintenance, home maintenance, or life in general that may even include preventative services. Focus on the points 1- Applicability To Theme, 2-Scalability, 3-Use Of Technology, 4-Impact/Usefulness, 5-Creativity/Originality.
