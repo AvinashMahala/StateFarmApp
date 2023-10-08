@@ -16,7 +16,7 @@ import { Ionicons } from "@expo/vector-icons";
 import axios from "axios";
 import { Alert } from "react-native";
 
-const apiUrl = "http://10.182.238.120:8000/";
+const apiUrl = "http://10.182.235.82:8000/";
 
 const RegisterScreen = () => {
   const [email, setEmail] = useState("");

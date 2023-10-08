@@ -86,7 +86,7 @@ const questions = [
       ];
 
 
-const apiUrl = "http://10.182.238.120:8000/";
+const apiUrl = "http://10.182.235.82:8000/";
 
 
 

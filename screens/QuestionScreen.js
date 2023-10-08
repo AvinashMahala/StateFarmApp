@@ -1,24 +1,29 @@
 import React, { useState } from "react";
 import {
-  StyleSheet,
-  View,
-  Text,
-  SafeAreaView,
-  Image,
-  Pressable,
-  Alert,
-  TextInput,
+    StyleSheet,
+    View,
+    Text,
+    SafeAreaView,
+    Image,
+    KeyboardAvoidingView,
+    TextInput,
+    Pressable,
+    Alert,
+    Button
 } from "react-native";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
-import DropDownPicker from "react-native-dropdown-picker"; // You need to install this package
 
 const QuestionScreen = () => {
-  const navigation = useNavigation();
+    const [inputValue, setInputValue] = useState("");
+    const navigation = useNavigation();
+
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [insuranceCount, setInsuranceCount] = useState(0);
 
   const [questions] = useState([
-    { id: "assetType", question: "What is the asset type?" },
-    { id: "model", question: "What is the model?" },
+    { id: "assetType", question: "Vehicle Type?" },
+    { id: "model", question: "Model of Auto?" },
     { id: "age", question: "How old is the asset?" },
     { id: "mileage", question: "What is the mileage?" },
     { id: "lastService", question: "When was the last service?" },
@@ -32,8 +37,6 @@ const QuestionScreen = () => {
     lastService: "",
   });
 
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [insuranceCount, setInsuranceCount] = useState(0);
 
   const handleInputChange = (value) => {
     const currentQuestionId = questions[currentQuestionIndex].id;
@@ -45,6 +48,12 @@ const QuestionScreen = () => {
     };
 
     setAnswers(updatedAnswers);
+    
+    
+
+    // const handleAnswer = () => {
+    //     const newAnswers = [...answers, inputValue];
+    //     setAnswers(newAnswers);
 
     // Log the new state copy
     console.log(updatedAnswers);
@@ -53,9 +62,10 @@ const QuestionScreen = () => {
   const handleNext = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setIndex(currentQuestionIndex+1);
     }
     axios
-      .post("http://10.182.238.120:8000/policy/getNPolicies", answers)
+      .post("http://10.182.235.82:8000/policy/getNPolicies", answers)
       .then((response) => {
         setInsuranceCount(response.data.count);
       })
@@ -81,7 +91,7 @@ const QuestionScreen = () => {
   const handleSubmit = () => {
     // Making an API call with the entire answers object
     axios
-      .post("http://10.182.238.120:8000/policy/getNPolicies", answers)
+      .post("http://10.182.235.82:8000/policy/getNPolicies", answers)
       .then((response) => {
         setInsuranceCount(response.data.count);
 
@@ -112,10 +122,11 @@ const QuestionScreen = () => {
   const handlePrev = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
+      currentQuestionIndex===0?setIndex(currentQuestionIndex):setIndex(currentQuestionIndex-1);
     }
 
     axios
-      .post("http://10.182.238.120:8000/policy/getNPolicies", answers)
+      .post("http://10.182.235.82:8000/policy/getNPolicies", answers)
       .then((response) => {
         setInsuranceCount(response.data.count);
       })
@@ -126,11 +137,25 @@ const QuestionScreen = () => {
         );
       });
   };
+  const [index,setIndex] = useState(0);
+  const Images = [
+    "https://s7d1.scene7.com/is/image/hyundai/2023-kona-ev-limited-fwd-blue-wave-profile:Vehicle-Carousel?fmt=webp-alpha",
+    "https://www.notateslaapp.com/images/news/2022/tesla-inside.jpg",
+    "https://us.123rf.com/450wm/erythropterus/erythropterus2304/erythropterus230405700/203490145-classic-cars-automotive-history-vintage-models-retro-aesthetics-and-timeless-design-ai.jpg?ver=6",
+    "https://www.shutterstock.com/shutterstock/photos/685250599/display_1500/stock-vector-car-speeding-wheel-vector-sketch-illustration-for-advertise-insurance-company-storyboard-project-685250599.jpg",
+    "https://img.freepik.com/premium-vector/car-service-repair-auto-workshop-interior-mechanics-men-service-vehicles_165429-1150.jpg",
+]
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "white", alignItems: "center" }}>
       {/* Image Component */}
-      <Image style={styles.image} source={{ uri: "YOUR_IMAGE_URL" }} />
+      <View style={styles.img}>
+              <Image
+                style={{ width: 450, height: 200, marginTop: 170 }}
+                source={{url:Images[index]}}
+            />
+              </View>
+
 
       {/* Questions and Text Input */}
       <View style={styles.questionContainer}>
@@ -222,6 +247,41 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
+  submitButton: {
+    width: 200,
+    backgroundColor: "#FEBE10",
+    borderRadius: 6,
+    marginTop: 20,
+    padding: 15
+},
+submitText: {
+    textAlign: "center",
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold"
+},
+wrap2:{
+    marginTop:30,
+    display:'flex',
+    justifyContent:'space-around',
+    alignContent:'center',
+    alignItems:'center',
+    height: 150,
+
+
+},
+txtfield:{
+    width:300,
+    height:100,
+
+},
+wrap3:{
+    display:'flex',
+    flexDirection:'row',
+    justifyContent:'space-around'
+}
 });
+
+
 
 export default QuestionScreen;
