@@ -132,13 +132,15 @@ const QuestionScreen = () => {
     "https://img.freepik.com/premium-vector/car-service-repair-auto-workshop-interior-mechanics-men-service-vehicles_165429-1150.jpg",
 ]
 
+// console.log(Images[index], index)
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white", alignItems: "center" }}>
       {/* Image Component */}
       <View style={styles.img}>
               <Image
                 style={{ width: 400, height: 200, marginTop: 160 }}
-                source={{url:Images[index]}}
+                source={{uri:Images[index]}}
             />
               </View>
 
