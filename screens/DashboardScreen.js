@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
       flexDirection:'column',
       justifyContent:'space-around',
       alignItems:'center',
-      borderRadius : '9px',
+      borderRadius : 9,
       shadowColor: "black",
       shadowOffset: { width: 10, height: 10 },
       shadowOpacity: 0.5,
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
       backgroundColor:'blue',
     },
     title:{
-      fontSize:'40px',
+      fontSize:40,
       color:'white',
       
     },
@@ -158,17 +158,17 @@ const styles = StyleSheet.create({
       alignItems:'center',
     },
     pricing:{
-        fontSize:'25px',
+        fontSize:25,
         color:'white',
 
     },
     subtit:{
-      fontSize:'20px',
+      fontSize:20,
       color:'white',
       textAlign:'center'
     },
     desc:{
-      fontSize:'17px',
+      fontSize:17,
       color:'white',
       maxWidth: 270,
     }
