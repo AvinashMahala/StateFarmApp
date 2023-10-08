@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 const jwt = require("jsonwebtoken");
 
-const apiUrl = "http://10.182.235.82:8000/";
+const apiUrl = "http://10.182.238.120:8000/";
 
 mongoose
   .connect("mongodb+srv://admin:admin@cluster0.zvwn3yq.mongodb.net/?retryWrites=true&w=majority", {
@@ -54,7 +54,7 @@ const sendVerificationEmail = async (email, verificationToken) => {
     from: "statefarm.com",
     to: email,
     subject: "Email Verification",
-    text: `Please click the following link to verify your email : http://10.182.235.82:8000/verify/${verificationToken}`,
+    text: `Please click the following link to verify your email : http://10.182.238.120:8000/verify/${verificationToken}`,
   };
   //Send Email.
   try {
