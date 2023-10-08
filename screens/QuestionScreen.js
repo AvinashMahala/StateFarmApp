@@ -22,11 +22,11 @@ const QuestionScreen = () => {
   const [insuranceCount, setInsuranceCount] = useState(0);
 
   const [questions] = useState([
-    { id: "assetType", question: "Vehicle Type?" },
-    { id: "model", question: "Model of Auto?" },
-    { id: "age", question: "How old is the asset?" },
-    { id: "mileage", question: "What is the mileage?" },
-    { id: "lastService", question: "When was the last service?" },
+    { id: "assetType", question: "Vehicle Type ?", placeholder:"Car, Bike, Bus, etc." },
+    { id: "model", question: "Category of Vehicle ?" , placeholder:"Sedan, SUV, etc."},
+    { id: "age", question: "Age Of Vehicle ?" , placeholder:"Number of Years Since purchased"},
+    { id: "mileage", question: "Total Miles Run ?" , placeholder:"Miles Completed"},
+    { id: "lastService", question: "Last Maintenance ?" , placeholder:"In Months"},
   ]);
 
   const [answers, setAnswers] = useState({
@@ -152,7 +152,7 @@ const QuestionScreen = () => {
           
           <TextInput
       style={styles.input}
-      placeholder="Enter text..."
+      placeholder={questions[currentQuestionIndex].placeholder}
       underlineColorAndroid="transparent" // Remove the default underline on Android
       onChangeText={(text) => handleInputChange(text)}
             value={answers[questions[currentQuestionIndex].id]}
@@ -189,14 +189,12 @@ const QuestionScreen = () => {
 
 const styles = StyleSheet.create({
   textInput: {
-    marginTop: 20,
     borderColor: "gray",
     borderWidth: 1,
     padding: 10,
     width: 220,
   },
   textArea: {
-    marginTop: 20,
     borderColor: "gray",
     borderWidth: 1,
     width: 220,
@@ -210,7 +208,6 @@ const styles = StyleSheet.create({
   image: {
     width: 350,
     height: 300,
-    marginTop: 20,
   },
   questionContainer: {
     flex: 1,
@@ -253,7 +250,6 @@ const styles = StyleSheet.create({
     width: 200,
     backgroundColor: "#FEBE10",
     borderRadius: 6,
-    marginTop: 20,
     padding: 15
 },
 submitText: {
@@ -263,7 +259,6 @@ submitText: {
     fontWeight: "bold"
 },
 wrap2:{
-    marginTop:30,
     display:'flex',
     justifyContent:'space-around',
     alignContent:'center',
@@ -302,7 +297,7 @@ input: {
   padding: 10,               // Add some padding for spacing
   fontSize: 16,              // Set the font size
   width:280,
-  marginTop:40,
+  marginTop:20,
 },
 
 });
