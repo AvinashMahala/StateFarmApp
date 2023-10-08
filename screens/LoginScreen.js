@@ -7,7 +7,7 @@ import {
   KeyboardAvoidingView,
   TextInput,
   Pressable,
-  Alert
+  Alert,
 } from "react-native";
 import React, { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -15,7 +15,6 @@ import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -62,8 +61,8 @@ const LoginScreen = () => {
     >
       <View>
         <Image
-          style={{ width: 250, height: 200, marginTop: 50 }}
-          source={require('./../assets/logo.png')}
+          style={{ width: 270, height: 200, marginTop: 80 }}
+          source={require("./../assets/logo.png")}
         />
       </View>
       <KeyboardAvoidingView>

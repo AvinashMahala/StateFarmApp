@@ -64,9 +64,9 @@ const RegisterScreen = () => {
       style={{ flex: 1, backgroundColor: "white", alignItems: "center" }}
     >
       <View>
-        <Image
-          style={{ width: 250, height: 200, marginTop: 50 }}
-          source={require('./../assets/logo.png')}
+      <Image
+          style={{ width: 270, height: 200, marginTop: 80 }}
+          source={require("./../assets/logo.png")}
         />
       </View>
       <KeyboardAvoidingView>
