@@ -57,6 +57,13 @@ A React Native mobile application powered by Expo, designed to help State Farm c
 
 ## Features
 
+- **User Authentication**: Securely login, register, and manage your session.
+- **Email Verification**: Ensure the authenticity of new users by verifying their email address during the registration process.
+- **JWT Token Integration**: Secure user sessions and API requests using JWT tokens.
+- **Dashboard**: View various insurance plans with their details and pricing.
+
+## Pages
+
 - **User Authentication**: Securely login and manage your session.
 - **Dashboard**: View various insurance plans with their details and pricing.
 - **Homepage**: Initial landing page presenting an overview of services.
