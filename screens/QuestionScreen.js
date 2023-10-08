@@ -126,7 +126,7 @@ const QuestionScreen = () => {
   const [index,setIndex] = useState(0);
   const Images = [
     "https://s7d1.scene7.com/is/image/hyundai/2023-kona-ev-limited-fwd-blue-wave-profile:Vehicle-Carousel?fmt=webp-alpha",
-    "https://www.notateslaapp.com/images/news/2022/tesla-inside.jpg",
+    "https://content-images.carmax.com/qeontfmijmzv/EBA8694C77DC0F2115C781289C96EF7507879B86/f8c5c27446501d767f23fe4ee0f96f20/166239-bg-vehicletypes-651x366.jpg?w=800&fm=webp",
     "https://us.123rf.com/450wm/erythropterus/erythropterus2304/erythropterus230405700/203490145-classic-cars-automotive-history-vintage-models-retro-aesthetics-and-timeless-design-ai.jpg?ver=6",
     "https://www.shutterstock.com/shutterstock/photos/685250599/display_1500/stock-vector-car-speeding-wheel-vector-sketch-illustration-for-advertise-insurance-company-storyboard-project-685250599.jpg",
     "https://img.freepik.com/premium-vector/car-service-repair-auto-workshop-interior-mechanics-men-service-vehicles_165429-1150.jpg",
@@ -139,7 +139,7 @@ const QuestionScreen = () => {
       {/* Image Component */}
       <View style={styles.img}>
               <Image
-                style={{ width: 400, height: 200, marginTop: 160 }}
+                style={{ width: 400, height: 200, marginTop: 80 }}
                 source={{uri:Images[index]}}
             />
               </View>
@@ -191,14 +191,14 @@ const styles = StyleSheet.create({
   textInput: {
     borderColor: "gray",
     borderWidth: 1,
-    padding: 10,
+    padding: 5,
     width: 220,
   },
   textArea: {
     borderColor: "gray",
     borderWidth: 1,
     width: 220,
-    padding: 10,
+    padding: 8,
   },
   container: {
     flex: 1,
@@ -278,16 +278,17 @@ wrap3:{
     justifyContent:'space-around'
 },
 title:{
+  marginTop:15,
   fontSize:40,
 
 },
 count:{
-  marginTop:20,
+  marginTop:10,
   fontSize:39,
 color:'green',
 },
 count1:{
-  marginTop:20,
+  marginTop:10,
   fontSize:26,
 
 },

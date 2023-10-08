@@ -35,6 +35,7 @@ const HomePageScreen = () => {
         >
           <Text style={styles.startButtonText}>Start Here</Text>
         </Pressable>
+        <Text style={styles.information}>An AI Based Recommendation App to cater needs of custom policies based on every specific need and type of action needed.</Text>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
@@ -51,7 +52,14 @@ const styles = StyleSheet.create({
   image: {
     width: 350,
     height: 300,
-    marginTop: 60,
+    marginTop: 40,
+  },
+  information: {
+    fontSize: 20,
+    fontStyle: 'italic', // Italics for a unique feel
+    textAlign: "left",
+    marginTop: 19,
+    marginLeft:10,
   },
   headline:{
     fontSize: 90,
@@ -61,8 +69,8 @@ const styles = StyleSheet.create({
     marginTop: 60,
   },
   tagline: {
-    marginTop: 50,
-    fontSize: 26,
+    marginTop: 30,
+    fontSize: 25,
     fontWeight: "600",
     color: "#333", // A shade of gray for a more subtle look.
     letterSpacing: 1, // Space between characters
