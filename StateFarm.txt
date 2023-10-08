@@ -77,7 +77,21 @@ Design a react native mobile app with mongodb that would provide guidance for ve
 
 
 
+const questions = [
+        { key: 'assetType', text: 'What type of asset is this?', options: ['Car', 'Bike', 'Truck'] },
+        { key: 'model', text: 'What is the model?', options: ['Model A', 'Model B', 'Model C'] },
+        { key: 'age', text: 'How old is the asset?', options: ['1 year', '2 years', '3 years'] },
+        { key: 'mileage', text: 'What is the mileage?', options: ['10k', '20k', '30k'] },
+        { key: 'lastService', text: 'When was the last service?', options: ['1 month ago', '6 months ago', '1 year ago'] },
+      ];
 
+
+const apiUrl = "http://10.182.238.120:8000/";
+
+
+
+
+Start Screen---> Question Pages ---> Policy --> Login ---> Register --> Policy
 
 
 
