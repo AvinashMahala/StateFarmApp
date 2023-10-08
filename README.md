@@ -26,8 +26,8 @@ A React Native mobile application powered by Expo, designed to help State Farm c
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/i-insure.git
-   cd i-insure
+   git clone https://github.com/AvinashMahala/StateFarmApp.git
+   cd StateFarmApp
    ```
 
 2. **Install the Dependencies**
