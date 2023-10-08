@@ -153,7 +153,7 @@ const QuestionScreen = () => {
       {/* Image Component */}
       <View style={styles.img}>
               <Image
-                style={{ width: 450, height: 200, marginTop: 170 }}
+                style={{ width: 400, height: 200, marginTop: 160 }}
                 source={{url:Images[index]}}
             />
               </View>
@@ -161,28 +161,33 @@ const QuestionScreen = () => {
 
       {/* Questions and Text Input */}
       <View style={styles.questionContainer}>
-        <Text>{questions[currentQuestionIndex].question}</Text>
+        <Text style={styles.title}>{questions[currentQuestionIndex].question}</Text>
         <View>
+          
           <TextInput
-            style={styles.textInput}
-            multiline
-            onChangeText={(text) => handleInputChange(text)}
+      style={styles.input}
+      placeholder="Enter text..."
+      underlineColorAndroid="transparent" // Remove the default underline on Android
+      onChangeText={(text) => handleInputChange(text)}
             value={answers[questions[currentQuestionIndex].id]}
-          />
+    />
         </View>
+        <Text
+          style={styles.count1}
+        >
+          Matching Policies
+          </Text>
+        <Text
+          style={styles.count}
+        >
 
-        <TextInput
-          style={styles.textArea}
-          multiline
-          numberOfLines={2}
-          editable={false}
-          value={`Available Insurance Options: ${insuranceCount}`}
-        />
+          {insuranceCount}
+        </Text>
       </View>
 
       {/* Footer with PREV and NEXT buttons */}
       <View style={styles.footer}>
-        <Pressable style={styles.prevButton} onPress={handlePrev}>
+        <Pressable style={styles.nextButton} onPress={handlePrev}>
           <Text style={styles.buttonText}>PREV</Text>
         </Pressable>
         {/* <Pressable style={styles.resetButton} onPress={handleReset}>
@@ -241,13 +246,22 @@ const styles = StyleSheet.create({
   },
   nextButton: {
     backgroundColor: "#FEBE10",
-    borderRadius: 6,
+    borderRadius: 37,
     padding: 15,
     marginRight: 10,
+    width:150,
+    height:60,
+    textAlign:'center',
+    justifyContent:'center',
+    display:'flex'
+
+
   },
   buttonText: {
     color: "white",
     fontWeight: "bold",
+    textAlign:'center',
+    fontSize:23,
   },
   submitButton: {
     width: 200,
@@ -281,7 +295,30 @@ wrap3:{
     display:'flex',
     flexDirection:'row',
     justifyContent:'space-around'
-}
+},
+title:{
+  fontSize:40,
+
+},
+count:{
+  marginTop:20,
+  fontSize:39,
+color:'green',
+},
+count1:{
+  marginTop:20,
+  fontSize:26,
+
+},
+input: {
+  borderBottomWidth: 1,        // Add a bottom border
+  borderBottomColor: 'black', // Customize the border color
+  padding: 10,               // Add some padding for spacing
+  fontSize: 16,              // Set the font size
+  width:280,
+  marginTop:40,
+},
+
 });
 
 
