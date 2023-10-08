@@ -54,6 +54,9 @@ A React Native mobile application powered by Expo, designed to help State Farm c
 
 - **User Authentication**: Securely login and manage your session.
 - **Dashboard**: View various insurance plans with their details and pricing.
+- **Homepage**: Initial landing page presenting an overview of services.
+- **Policy Questionnaire**: Gather information from users to suggest policies.
+- **User Registration**: Where new users can create their accounts.
 
 ## Contributing
 
