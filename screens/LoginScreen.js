@@ -12,11 +12,28 @@ import React, { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-    const navigation=useNavigation()
+  const navigation=useNavigation()
+  const handleLogin=()=>{
+    const user={
+      email:email,
+      password:password
+    }
+    axios.post("http://10.182.238.120:8000/login",user).then((response)=>{
+      console.log(response)
+      const token = response.data.token;
+      AsyncStorage.setItem("authToken", token);
+      navigation.replace("Dashboard")
+    }).catch((err)=>{
+      Alert.alert("Login Error!","Invalid Email.");
+      console.log(err)
+    })
+  }
 
   return (
     <SafeAreaView
@@ -119,6 +136,7 @@ const LoginScreen = () => {
         <View style={{ marginTop: 80 }} />
 
         <Pressable
+        onPress={handleLogin}
           style={{
             width: 200,
             backgroundColor: "#FEBE10",
