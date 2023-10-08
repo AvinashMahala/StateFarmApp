@@ -37,21 +37,22 @@ import {
           <Pressable
             onPress={() => navigation.navigate("Question")}
             style={{
-              width: 200,
-              backgroundColor: "#FEBE10",
+              width: 350,
+              backgroundColor: "green",
               borderRadius: 6,
               marginLeft: "auto",
               marginRight: "auto",
               marginTop: 40,
               padding: 15,
+              
             }}
           >
             <Text
               style={{
                 textAlign: "center",
                 color: "white",
-                fontSize: 16,
-                fontWeight: "bold",
+                fontSize: 40,
+                fontWeight: "regular",
               }}
             >
               Start Here
