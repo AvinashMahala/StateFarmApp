@@ -35,14 +35,19 @@ A React Native mobile application powered by Expo, designed to help State Farm c
    npm install
    ```
 
-3. **Setup Environment**
+3. **Install the api Dependencies and start server**
 
-   Copy `.env.example` to `.env` and fill in the required environment variables.
+    ```bash
+    cd api
+   npm install
+    npm start
+   ```
 
 ## Running the App
 
 1. **Start the App with Expo**
    ```bash
+   cd ..
    expo start
    ```
 
