@@ -33,6 +33,6 @@ const AnswerSlice = createSlice({
 },
 });
 
-export const { saveAnswer, removeAnswer, updateAnswer,getAnswer} = AnswerSlice.actions;
+export const { saveAnswers, removeAnswer, updateAnswer,getAnswer} = AnswerSlice.actions;
 
 export default AnswerSlice.reducer;

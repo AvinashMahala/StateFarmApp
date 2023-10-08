@@ -13,6 +13,8 @@ import {
 } from "react-native";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import { saveAnswers } from "./Store/Slices/Answers/AnswerSlice";
 
 const QuestionScreen = () => {
     const [inputValue, setInputValue] = useState("");
@@ -58,15 +60,17 @@ const QuestionScreen = () => {
     // Log the new state copy
     //console.log(updatedAnswers);
   };
-
+ const dispatch = useDispatch();
   const handleNext = () => {
-    if(index===4) navigation.navigate('Dashboard')
+    if(index===4) {
+      dispatch(saveAnswers(answers));
+      navigation.navigate('Dashboard');}
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setIndex(currentQuestionIndex+1);
     }
     axios
-      .post("http://10.182.238.120:8000/policy/getNPolicies", answers)
+      .post("http://10.182.235.82:8009/policy/getNPolicies", answers)
       .then((response) => {
         setInsuranceCount(response.data.count);
       })
@@ -92,7 +96,7 @@ const QuestionScreen = () => {
   const handleSubmit = () => {
     // Making an API call with the entire answers object
     axios
-      .post("http://10.182.238.120:8000/policy/getNPolicies", answers)
+      .post("http://10.182.235.82:8009/policy/getNPolicies", answers)
       .then((response) => {
         setInsuranceCount(response.data.count);
       })
@@ -112,7 +116,7 @@ const QuestionScreen = () => {
     }
 
     axios
-      .post("http://10.182.238.120:8000/policy/getNPolicies", answers)
+      .post("http://10.182.235.82:8009/policy/getNPolicies", answers)
       .then((response) => {
         setInsuranceCount(response.data.count);
       })
@@ -173,13 +177,13 @@ const QuestionScreen = () => {
 
       {/* Footer with PREV and NEXT buttons */}
       <View style={styles.footer}>
-        <Pressable style={styles.nextButton} onPress={handlePrev}>
+        <Pressable style={styles.nextButton} onPress={handlePrev} disabled={answers[questions[index].id].length>0? false : true} >
           <Text style={styles.buttonText}>PREV</Text>
         </Pressable>
         {/* <Pressable style={styles.resetButton} onPress={handleReset}>
           <Text style={styles.buttonText}>RESET</Text>
         </Pressable> */}
-        <Pressable style={styles.nextButton} onPress={handleNext}>
+        <Pressable style={styles.nextButton} onPress={handleNext} disabled={answers[questions[index].id].length>0? false : true} >
           <Text style={styles.buttonText}>NEXT</Text>
         </Pressable>
       </View>

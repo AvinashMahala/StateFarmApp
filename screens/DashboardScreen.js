@@ -45,6 +45,9 @@ const DashboardScreen = () => {
       </View>
 
       <View style={styles.body}>
+        <Pressable onPress={(e)=>{
+          navigation.navigate('Login');
+        }} >
         <View style={styles.child11}>
         <Text style={styles.title}>Basic Plan</Text>
         <View style={styles.body}>
@@ -58,6 +61,10 @@ const DashboardScreen = () => {
           <Text style={styles.desc}>{`Maintainance `}</Text>
         </View>
       </View>
+      </Pressable>
+      <Pressable onPress={(e)=>{
+          navigation.navigate('Login');
+        }} >
       <View style={styles.child11}>
         <Text style={styles.title}>Recommended {"\t\t\tPlan"}</Text>
         <View style={styles.body}>
@@ -71,6 +78,10 @@ const DashboardScreen = () => {
           <Text style={styles.desc}>{`Maintainance `}</Text>
         </View>
       </View>
+      </Pressable>
+      <Pressable onPress={(e)=>{
+          navigation.navigate('Login');
+        }} >
       <View style={styles.child11}>
         <Text style={styles.title}>Basic Plan</Text>
         <View style={styles.body}>
@@ -82,6 +93,7 @@ const DashboardScreen = () => {
           <Text style={styles.desc}>{`Maintainance `}</Text>
         </View>
       </View>
+      </Pressable>
       </View>
       
       <View style={styles.footer}>

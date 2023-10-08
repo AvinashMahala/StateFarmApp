@@ -6,16 +6,19 @@ const nodemailer = require("nodemailer");
 const policies = require('./models/policies');
 const fs = require('fs') 
 const app = express();
-const port = 8000;
+const port = 8009;
 const cors = require("cors");
 app.use(cors());
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(bodyParser.json());
+// Middleware to parse JSON
 
 const jwt = require("jsonwebtoken");
 
-const apiUrl = "http://10.182.238.120:8000/";
+const apiUrl = "http://10.182.235.82:8009/";
 
 mongoose
   .connect("mongodb+srv://admin:admin@cluster0.zvwn3yq.mongodb.net/?retryWrites=true&w=majority", {
@@ -35,6 +38,7 @@ app.listen(port, () => {
 
 const User = require("./models/user");
 const Order = require("./models/order");
+const { stringify } = require("querystring");
 
 //function to send Verification Email to the user
 const sendVerificationEmail = async (email, verificationToken) => {
@@ -54,7 +58,7 @@ const sendVerificationEmail = async (email, verificationToken) => {
     from: "statefarm.com",
     to: email,
     subject: "Email Verification",
-    text: `Please click the following link to verify your email : http://10.182.238.120:8000/verify/${verificationToken}`,
+    text: `Please click the following link to verify your email : http://10.182.235.82:8009/verify/${verificationToken}`,
   };
   //Send Email.
   try {
@@ -172,10 +176,14 @@ app.post("/policy/getPolicyCount" , async (req,response)=>{
       lastService: {
         $gt : lastService
       }
-  }).count();
+  }).then(res=>{
+    console.log("seding to client",res);
+    response.status(200).send(res).catch(err=>{
+      console.log("eror while seding polis");
+    })
+  })
 
-  return response.status(200).send({count});
-
+  
 }
 catch(err){
   console.log("Error while fetching count of policies", err.message);
@@ -184,8 +192,9 @@ catch(err){
 
 })
 
-app.post("/policy/getAllPolicies" , async (req,response)=>{
+app.post("/policy/getAllPolicies/" , async (req,response)=>{
   try{
+    console.log(req)
   const {
     assetType,
     model,
@@ -193,7 +202,7 @@ app.post("/policy/getAllPolicies" , async (req,response)=>{
     age,
     lastService,
   } = req.body;
-  
+  console.log("get all fired",req.body);
   const count = await policies.find({
       assetType: assetType,
       model: model,
@@ -206,8 +215,31 @@ app.post("/policy/getAllPolicies" , async (req,response)=>{
       lastService: {
         $gt : lastService
       }
+  },{
+    maintainanceInterval:1,
+    policyCost:1,
+    
   }).then(res=>{
-     response.status(200).send(res)
+    res.sort((a,b)=>{
+       a.policyCost - b.policyCost
+    });
+    console.log("before sorting res is",res.length);
+    if(res.length===0){
+      response.status(200).send([
+        stringify(res)
+      ]);
+    }
+    else{
+    
+    var xx = [
+      res[0] , 
+    ]
+     xx=[...xx , res[res.length/2]];
+    xx=[...xx,res[res.length-1]];
+    res=xx;
+    console.log("after sorting res is",res.length);
+     response.status(200).send(res);
+  }
   }).catch(err=>{
     console.log("Error while fetching policies")
   })
