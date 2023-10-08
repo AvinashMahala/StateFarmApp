@@ -3,7 +3,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
-
+const policies = require('./models/policies');
+const fs = require('fs') 
 const app = express();
 const port = 8000;
 const cors = require("cors");
@@ -17,7 +18,7 @@ const jwt = require("jsonwebtoken");
 const apiUrl = "http://10.182.238.120:8000/";
 
 mongoose
-  .connect("mongodb+srv://admin:admin@cluster0.zvwn3yq.mongodb.net/", {
+  .connect("mongodb+srv://admin:admin@cluster0.zvwn3yq.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -145,3 +146,190 @@ app.post("/login", async (req, res) => {
     res.status(500).json({ message: "Login Failed." });
   }
 });
+
+
+// input : client filter from questionere 
+app.post("/policy/getPolicyCount" , async (req,response)=>{
+  try{
+  const {
+    assetType,
+    model,
+    mileage,
+    age,
+    lastService,
+
+  } = req.body;
+  
+  const count = await policies.find({
+      assetType: assetType,
+      model: model,
+      mileage : {
+        $gt : mileage
+      },
+      age: {
+        $gt : age
+      },
+      lastService: {
+        $gt : lastService
+      }
+  }).count();
+
+  return response.status(200).send({count});
+
+}
+catch(err){
+  console.log("Error while fetching count of policies", err.message);
+}
+
+
+})
+
+app.post("/policy/getAllPolicies" , async (req,response)=>{
+  try{
+  const {
+    assetType,
+    model,
+    mileage,
+    age,
+    lastService,
+  } = req.body;
+  
+  const count = await policies.find({
+      assetType: assetType,
+      model: model,
+      mileage : {
+        $gt : mileage
+      },
+      age: {
+        $gt : age
+      },
+      lastService: {
+        $gt : lastService
+      }
+  }).then(res=>{
+     response.status(200).send(res)
+  }).catch(err=>{
+    console.log("Error while fetching policies")
+  })
+
+  
+
+}
+catch(err){
+  console.log("Error while fetching count of policies", err.message);
+}
+
+
+})
+
+const ModelSamples = ["Heavy", "Transport", "Compact", "Standard"];
+
+app.post("/policy/getNPolicies" , async (req,response)=>{
+  try{
+    if(!req.body){
+      response.status(404).send("Provide Detials");
+    }
+    else{
+  var {
+    assetType,
+    model,
+    mileage,
+    age,
+    lastService,
+  } = req.body;
+  assetType=[ assetType ];
+  model = [ model ];
+  if(!assetType[0]) assetType = ["Car", "Motorcycle", "Truck"];
+  if(!model[0]) model = ModelSamples;
+  if(!mileage)mileage = 0;
+  if(!age) age = 0;
+  if(!lastService) lastService = 0;
+
+  console.log("assetType ", assetType, " model ", model , "mileage ",
+  mileage, " age ", age, " lastService ", lastService
+  )
+  const count = await policies.find(
+    {
+      assetType: { $in :assetType},
+      model: { $in :model},
+      mileage : {
+        $gt : mileage
+      },
+      age: {
+        $gt : age
+      },
+      lastService: {
+        $gt : lastService
+      }
+    }
+  ).count();
+     response.status(200).send({count});
+    }
+}
+catch(err){
+  console.log("Error while fetching count of policies", err.message);
+}
+
+
+})
+
+
+  
+
+
+        
+
+//   function generateRandomPolicy() {
+//   const policies = [];
+//   const policyNames = ["Policy A", "Policy B", "Policy C", "Policy D", "Policy E"];
+//   const assetTypes = ["Car", "Motorcycle", "Truck"];
+//   const coverageOptions = ["Basic", "Extended"];
+//   const models = ["Heavy", "Transport", "Compact", "Standard"];
+
+//   for (let i = 1; i <= 1000; i++) {
+//     const policy = {
+//       policyID:new mongoose.Types.ObjectId,
+//       policyName: policyNames[Math.floor(Math.random() * policyNames.length)],
+//       policyCost: Math.floor(Math.random() * 1000) + 500, // Random cost between 500 and 1499
+//       policyDescription: "Sample policy description",
+//       policyQualifiers: [],
+//       assetType: assetTypes[Math.floor(Math.random() * assetTypes.length)],
+//       policyCoverage: Math.floor(Math.random() * 11) + 1, // Random coverage between 1 and 11 months
+//       maintenance: new mongoose.Types.ObjectId, // 50% chance of true/false
+//       age: Math.floor(Math.random() * 19) + 1, // Random age between 1 and 19
+//       model: models[Math.floor(Math.random() * models.length)],
+//       lastService: Math.floor(Math.random() * 12) + 1, // Random last service between 1 and 12 months
+//       mileage: Math.floor(Math.random() * 100000), // Random mileage
+//       maintainanceInterval: Math.floor(Math.random() * 11) +1, // Random maintainance interval between 1 and 12 months
+//     };
+  
+//     policies.push(policy);   
+//   }
+
+//   return policies; 
+// }
+
+// const policiesArray =  generateRandomPolicy();
+// console.log(policiesArray, null, 2);
+// // fs.writeFile('Output.js', policiesArray, (err) => { 
+          
+// //   // In case of a error throw err.  
+// //   if (err) throw err; 
+// // }) 
+
+// if(policiesArray.length>900){
+//   policiesArray.forEach(async policy => {
+//    const newPolicy  = new policies({
+//     ...policy,
+//    })
+
+//    newPolicy.save().then(res=>{
+//    console.log("saved policy", res);
+//    }).catch(err=>{
+//   // console.log("error saving policy", err.message); 
+//    })
+
+//   }) 
+// }
+
+
