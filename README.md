@@ -1,7 +1,7 @@
 # StateFarmApp
  StateFarmApp
 
-# I Insure: Sheltering Dreams, Navigating Realities
+# Insure: Sheltering Dreams, Navigating Realities
 
 A React Native mobile application powered by Expo, designed to help State Farm customers select insurance policies based on various plans.
 
