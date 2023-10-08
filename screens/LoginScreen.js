@@ -16,6 +16,7 @@ import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -62,9 +63,7 @@ const LoginScreen = () => {
       <View>
         <Image
           style={{ width: 150, height: 100, marginTop: 30 }}
-          source={{
-            uri: "https://assets.stickpng.com/thumbs/6160562276000b00045a7d97.png",
-          }}
+          source={require('./assets/logo.png')}
         />
       </View>
       <KeyboardAvoidingView>
