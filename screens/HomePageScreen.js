@@ -19,7 +19,7 @@ const HomePageScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View>
-      <Text style={styles.headline}>I Insure </Text>
+      <Text style={styles.headline}> Asset Guard </Text>
         <Image
           style={styles.image}
           source={{
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     marginLeft:10,
   },
   headline:{
-    fontSize: 90,
+    fontSize: 60,
     fontWeight: "bold",
     color: "green",
     textAlign: "center",
