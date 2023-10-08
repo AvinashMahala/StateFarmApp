@@ -65,10 +65,8 @@ const RegisterScreen = () => {
     >
       <View>
         <Image
-          style={{ width: 150, height: 100, marginTop: 30 }}
-          source={{
-            uri: "https://assets.stickpng.com/thumbs/6160562276000b00045a7d97.png",
-          }}
+          style={{ width: 250, height: 200, marginTop: 50 }}
+          source={require('./../assets/logo.png')}
         />
       </View>
       <KeyboardAvoidingView>
@@ -78,7 +76,7 @@ const RegisterScreen = () => {
           </Text>
         </View>
 
-        <View style={{ marginTop: 70 }}>
+        <View style={{ marginTop: 30 }}>
           <View
             style={{
               flexDirection: "row",
@@ -189,13 +187,13 @@ const RegisterScreen = () => {
           </Text>
         </View>
 
-        <View style={{ marginTop: 80 }} />
+        <View style={{ marginTop: 60 }} />
 
         <Pressable
           onPress={handleRegister}
           style={{
             width: 200,
-            backgroundColor: "#FEBE10",
+            backgroundColor: "#0F4C81",
             borderRadius: 6,
             marginLeft: "auto",
             marginRight: "auto",
@@ -206,7 +204,7 @@ const RegisterScreen = () => {
             style={{
               textAlign: "center",
               color: "white",
-              fontSize: 16,
+              fontSize: 20,
               fontWeight: "bold",
             }}
           >

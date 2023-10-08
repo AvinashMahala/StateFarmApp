@@ -62,8 +62,8 @@ const LoginScreen = () => {
     >
       <View>
         <Image
-          style={{ width: 150, height: 100, marginTop: 30 }}
-          source={require('./assets/logo.png')}
+          style={{ width: 250, height: 200, marginTop: 50 }}
+          source={require('./../assets/logo.png')}
         />
       </View>
       <KeyboardAvoidingView>
@@ -73,7 +73,7 @@ const LoginScreen = () => {
           </Text>
         </View>
 
-        <View style={{ marginTop: 70 }}>
+        <View style={{ marginTop: 30 }}>
           <View
             style={{
               flexDirection: "row",
@@ -158,7 +158,7 @@ const LoginScreen = () => {
           onPress={handleLogin}
           style={{
             width: 200,
-            backgroundColor: "#FEBE10",
+            backgroundColor: "#0F4C81",
             borderRadius: 6,
             marginLeft: "auto",
             marginRight: "auto",
@@ -169,7 +169,7 @@ const LoginScreen = () => {
             style={{
               textAlign: "center",
               color: "white",
-              fontSize: 16,
+              fontSize: 20,
               fontWeight: "bold",
             }}
           >
