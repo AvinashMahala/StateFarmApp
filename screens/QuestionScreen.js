@@ -60,6 +60,7 @@ const QuestionScreen = () => {
   };
 
   const handleNext = () => {
+    if(index===4) navigation.navigate('Dashboard')
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setIndex(currentQuestionIndex+1);
@@ -120,6 +121,7 @@ const QuestionScreen = () => {
   };
 
   const handlePrev = () => {
+    if(index===0) navigation.navigate('Homepage');
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
       currentQuestionIndex===0?setIndex(currentQuestionIndex):setIndex(currentQuestionIndex-1);
