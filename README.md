@@ -1,7 +1,6 @@
 # StateFarmApp
  StateFarmApp
-[![Avinash's GitHub stats](https://github-readme-stats.vercel.app/api?username=AvinashMahala&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage&show_icons=true&theme=dark)]
-[![Savan's GitHub stats](https://github-readme-stats.vercel.app/api?username=savanp08&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage&theme=radical)]
+
 # Insure: Sheltering Dreams, Navigating Realities
 
 A React Native mobile application powered by Expo, designed to help State Farm customers select insurance policies based on various plans.
@@ -81,3 +80,6 @@ A React Native mobile application powered by Expo, designed to help State Farm c
 ## License
 
 This project is licensed under the MIT License.
+
+[![Avinash's GitHub stats](https://github-readme-stats.vercel.app/api?username=AvinashMahala&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage&show_icons=true&theme=dark)]
+[![Savan's GitHub stats](https://github-readme-stats.vercel.app/api?username=savanp08&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage&theme=radical)]
