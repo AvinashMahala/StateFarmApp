@@ -66,7 +66,7 @@ const QuestionScreen = () => {
       setIndex(currentQuestionIndex+1);
     }
     axios
-      .post("http://10.182.235.82:8000/policy/getNPolicies", answers)
+      .post("http://10.182.238.120:8000/policy/getNPolicies", answers)
       .then((response) => {
         setInsuranceCount(response.data.count);
       })
@@ -92,25 +92,9 @@ const QuestionScreen = () => {
   const handleSubmit = () => {
     // Making an API call with the entire answers object
     axios
-      .post("http://10.182.235.82:8000/policy/getNPolicies", answers)
+      .post("http://10.182.238.120:8000/policy/getNPolicies", answers)
       .then((response) => {
         setInsuranceCount(response.data.count);
-
-        // // Proceed to next question or navigate if questions are done
-        // if (currentQuestionIndex < questions.length - 1) {
-        //   setCurrentQuestionIndex(currentQuestionIndex + 1);
-        // } else {
-        //   Alert.alert("Finished", "Do you want to go to the next page?", [
-        //     {
-        //       text: "Cancel",
-        //       style: "cancel",
-        //     },
-        //     {
-        //       text: "OK",
-        //       onPress: () => navigation.navigate("Dashboard"),
-        //     },
-        //   ]);
-        // }
       })
       .catch(() => {
         Alert.alert(
@@ -128,7 +112,7 @@ const QuestionScreen = () => {
     }
 
     axios
-      .post("http://10.182.235.82:8000/policy/getNPolicies", answers)
+      .post("http://10.182.238.120:8000/policy/getNPolicies", answers)
       .then((response) => {
         setInsuranceCount(response.data.count);
       })
