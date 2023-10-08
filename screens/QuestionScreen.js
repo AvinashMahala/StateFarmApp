@@ -15,12 +15,16 @@ import {
   import { Ionicons } from "@expo/vector-icons";
   import axios from "axios";
   import { Alert } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
   
   
   const QuestionScreen = () => {
 
     const navigation = useNavigation();
-  
+    const dispatch = useDispatch();
+    const user = useSelector(state=> state.user);
+    console.log("Qu PA", user);
+    
     return (
       <SafeAreaView
         style={{ flex: 1, backgroundColor: "white", alignItems: "center" }}
