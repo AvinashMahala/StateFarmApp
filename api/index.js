@@ -245,9 +245,9 @@ app.post("/policy/getNPolicies" , async (req,response)=>{
   if(!age) age = 0;
   if(!lastService) lastService = 0;
 
-  console.log("assetType ", assetType, " model ", model , "mileage ",
-  mileage, " age ", age, " lastService ", lastService
-  )
+  // console.log("assetType ", assetType, " model ", model , "mileage ",
+  // mileage, " age ", age, " lastService ", lastService
+  // )
   const count = await policies.find(
     {
       assetType: { $in :assetType},

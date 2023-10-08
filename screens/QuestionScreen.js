@@ -56,7 +56,7 @@ const QuestionScreen = () => {
     //     setAnswers(newAnswers);
 
     // Log the new state copy
-    console.log(updatedAnswers);
+    //console.log(updatedAnswers);
   };
 
   const handleNext = () => {
