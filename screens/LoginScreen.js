@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView,
   TextInput,
   Pressable,
+  Alert
 } from "react-native";
 import React, { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -18,22 +19,41 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigation=useNavigation()
-  const handleLogin=()=>{
-    const user={
-      email:email,
-      password:password
+  const navigation = useNavigation();
+  const handleLogin = () => {
+    if (!email.trim() || !password.trim()) {
+      Alert.alert(
+        "Validation Error",
+        "Both email and password fields are required."
+      );
+      return;
     }
-    axios.post("http://10.182.238.120:8000/login",user).then((response)=>{
-      console.log(response)
-      const token = response.data.token;
-      AsyncStorage.setItem("authToken", token);
-      navigation.replace("Dashboard")
-    }).catch((err)=>{
-      Alert.alert("Login Error!","Invalid Email.");
-      console.log(err)
-    })
-  }
+
+    // More specific validations can be added here, like email format validation, password strength, etc.
+
+    const user = {
+      email: email,
+      password: password,
+    };
+
+    axios
+      .post("http://10.182.238.120:8000/login", user)
+      .then((response) => {
+        console.log(response);
+        const token = response.data.token;
+        AsyncStorage.setItem("authToken", token);
+        navigation.replace("Dashboard");
+      })
+      .catch((err) => {
+        console.log(err);
+
+        // A generic error message for server errors or connectivity issues
+        Alert.alert(
+          "Login Error",
+          "An error occurred while logging in. Please try again."
+        );
+      });
+  };
 
   return (
     <SafeAreaView
@@ -136,7 +156,7 @@ const LoginScreen = () => {
         <View style={{ marginTop: 80 }} />
 
         <Pressable
-        onPress={handleLogin}
+          onPress={handleLogin}
           style={{
             width: 200,
             backgroundColor: "#FEBE10",
@@ -158,9 +178,10 @@ const LoginScreen = () => {
           </Text>
         </Pressable>
 
-        <Pressable 
-            onPress={()=>navigation.navigate("Register")}
-        style={{ textAlign: "center", color: "gray", fontSize: 16 }}>
+        <Pressable
+          onPress={() => navigation.navigate("Register")}
+          style={{ textAlign: "center", color: "gray", fontSize: 16 }}
+        >
           <Text
             style={{
               textAlign: "center",
