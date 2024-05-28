@@ -3,7 +3,7 @@
  
 https://www.youtube.com/watch?v=aSo0J8QK55I&t=12s
 
-# Insure: Sheltering Dreams, Navigating Realities
+# Asset Guard: Sheltering Dreams, Navigating Realities
 
 A React Native mobile application powered by Expo, designed to help State Farm customers select insurance policies based on various plans.
 
